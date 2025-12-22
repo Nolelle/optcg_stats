@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: #1a1a24;
+  --text-primary: #f0f0f5;
+  --text-secondary: #9090a0;
+  --accent-primary: #6366f1;
+  --accent-secondary: #ec4899;
+  --border-color: #2a2a3a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a4a;
+}
+
+/* Tier badge styles */
+@layer components {
+  .tier-badge {
+    @apply inline-flex items-center justify-center w-8 h-8 rounded-lg font-bold text-sm;
+  }
+  
+  .tier-s {
+    @apply bg-gradient-to-br from-yellow-400 to-amber-600 text-black;
+  }
+  
+  .tier-a {
+    @apply bg-gradient-to-br from-slate-300 to-slate-500 text-black;
+  }
+  
+  .tier-b {
+    @apply bg-gradient-to-br from-orange-400 to-orange-700 text-white;
+  }
+  
+  .tier-c {
+    @apply bg-gradient-to-br from-blue-400 to-blue-600 text-white;
+  }
+  
+  .tier-d {
+    @apply bg-gradient-to-br from-gray-500 to-gray-700 text-white;
+  }
+  
+  .card-container {
+    @apply bg-[#1a1a24] rounded-xl border border-[#2a2a3a] p-4 transition-all duration-200;
+  }
+  
+  .card-container:hover {
+    @apply border-[#3a3a4a] shadow-lg;
+  }
+  
+  .btn-primary {
+    @apply px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-lg font-medium transition-all duration-200 hover:shadow-lg hover:shadow-indigo-500/25;
+  }
+  
+  .btn-secondary {
+    @apply px-4 py-2 bg-[#2a2a3a] text-white rounded-lg font-medium transition-all duration-200 hover:bg-[#3a3a4a];
+  }
+  
+  .input-field {
+    @apply px-4 py-2 bg-[#12121a] border border-[#2a2a3a] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-colors;
+  }
+}
