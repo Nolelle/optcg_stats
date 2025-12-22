@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { api, LeaderWithStats } from '../api/client';
+import { api } from '../api/client';
+import type { LeaderWithStats } from '../api/client';
 import { TierBadge } from '../components/TierBadge';
 import { ColorBadge } from '../components/ColorBadge';
 import { WinRateBar } from '../components/WinRateBar';

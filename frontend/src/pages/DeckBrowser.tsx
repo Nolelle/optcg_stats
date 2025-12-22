@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { api, Deck, DeckWithCost } from '../api/client';
+import { api } from '../api/client';
+import type { Deck, DeckWithCost } from '../api/client';
 import { TierBadge } from '../components/TierBadge';
 import { WinRateBar } from '../components/WinRateBar';
 import { PageLoader } from '../components/LoadingSpinner';

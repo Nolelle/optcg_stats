@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams, Link } from 'react-router-dom';
-import { api, DeckWithCost } from '../api/client';
+import { api } from '../api/client';
+import type { DeckWithCost } from '../api/client';
 import { TierBadge } from '../components/TierBadge';
 import { WinRateBar } from '../components/WinRateBar';
 import { ColorBadge } from '../components/ColorBadge';

@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { api, MatchupMatrix as MatchupMatrixType, MatchupCell } from '../api/client';
+import { api } from '../api/client';
+import type { MatchupMatrix as MatchupMatrixType, MatchupCell } from '../api/client';
 import { PageLoader } from '../components/LoadingSpinner';
 import { useState } from 'react';
 

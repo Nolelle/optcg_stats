@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --bg-primary: #0a0a0f;
@@ -47,48 +45,96 @@ body {
 }
 
 /* Tier badge styles */
-@layer components {
-  .tier-badge {
-    @apply inline-flex items-center justify-center w-8 h-8 rounded-lg font-bold text-sm;
-  }
-  
-  .tier-s {
-    @apply bg-gradient-to-br from-yellow-400 to-amber-600 text-black;
-  }
-  
-  .tier-a {
-    @apply bg-gradient-to-br from-slate-300 to-slate-500 text-black;
-  }
-  
-  .tier-b {
-    @apply bg-gradient-to-br from-orange-400 to-orange-700 text-white;
-  }
-  
-  .tier-c {
-    @apply bg-gradient-to-br from-blue-400 to-blue-600 text-white;
-  }
-  
-  .tier-d {
-    @apply bg-gradient-to-br from-gray-500 to-gray-700 text-white;
-  }
-  
-  .card-container {
-    @apply bg-[#1a1a24] rounded-xl border border-[#2a2a3a] p-4 transition-all duration-200;
-  }
-  
-  .card-container:hover {
-    @apply border-[#3a3a4a] shadow-lg;
-  }
-  
-  .btn-primary {
-    @apply px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-lg font-medium transition-all duration-200 hover:shadow-lg hover:shadow-indigo-500/25;
-  }
-  
-  .btn-secondary {
-    @apply px-4 py-2 bg-[#2a2a3a] text-white rounded-lg font-medium transition-all duration-200 hover:bg-[#3a3a4a];
-  }
-  
-  .input-field {
-    @apply px-4 py-2 bg-[#12121a] border border-[#2a2a3a] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-colors;
-  }
+.tier-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.tier-s {
+  background: linear-gradient(to bottom right, #facc15, #d97706);
+  color: black;
+}
+
+.tier-a {
+  background: linear-gradient(to bottom right, #cbd5e1, #64748b);
+  color: black;
+}
+
+.tier-b {
+  background: linear-gradient(to bottom right, #fb923c, #c2410c);
+  color: white;
+}
+
+.tier-c {
+  background: linear-gradient(to bottom right, #60a5fa, #2563eb);
+  color: white;
+}
+
+.tier-d {
+  background: linear-gradient(to bottom right, #6b7280, #374151);
+  color: white;
+}
+
+.card-container {
+  background-color: #1a1a24;
+  border-radius: 0.75rem;
+  border: 1px solid #2a2a3a;
+  padding: 1rem;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.card-container:hover {
+  border-color: #3a3a4a;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(to right, #6366f1, #9333ea);
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.25);
+}
+
+.btn-secondary {
+  padding: 0.5rem 1rem;
+  background-color: #2a2a3a;
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: #3a3a4a;
+}
+
+.input-field {
+  padding: 0.5rem 1rem;
+  background-color: #12121a;
+  border: 1px solid #2a2a3a;
+  border-radius: 0.5rem;
+  color: white;
+  transition: border-color 0.2s;
+}
+
+.input-field::placeholder {
+  color: #6b7280;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #6366f1;
 }

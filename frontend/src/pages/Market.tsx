@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { api, Card, CardWithPrice, PriceMover } from '../api/client';
+import { api } from '../api/client';
+import type { Card, CardWithPrice, PriceMover } from '../api/client';
 import { PageLoader } from '../components/LoadingSpinner';
 import { useState } from 'react';
 import { Search, TrendingUp, TrendingDown, DollarSign, ArrowRight } from 'lucide-react';
