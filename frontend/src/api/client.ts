@@ -58,6 +58,30 @@ export interface DeckWithCost extends Deck {
   card_breakdown: Record<string, number> | null;
 }
 
+export interface CardInDeck {
+  id: string;
+  name: string;
+  card_type: string | null;
+  cost: number | null;
+  power: number | null;
+  color: string | null;
+  rarity: string | null;
+  image_url: string | null;
+  count: number;
+  price_usd: number | null;
+  price_eur: number | null;
+}
+
+export interface DeckDetailedResponse extends Deck {
+  total_cost_usd: number | null;
+  total_cost_eur: number | null;
+  leader_name: string | null;
+  leader_color: string | null;
+  leader_image_url: string | null;
+  cards: CardInDeck[];
+  cost_curve: Record<string, number>;
+}
+
 // Matchup types
 export interface MatchupCell {
   leader_a_id: string;
@@ -131,6 +155,7 @@ export const api = {
     fetchAPI<Deck[]>(`/decks/leader/${leaderId}`),
   getDeck: (id: number) => fetchAPI<Deck>(`/decks/${id}`),
   getDeckWithCost: (id: number) => fetchAPI<DeckWithCost>(`/decks/${id}/with-cost`),
+  getDeckDetailed: (id: number) => fetchAPI<DeckDetailedResponse>(`/decks/${id}/detailed`),
 
   // Matchups
   getMatchups: () => fetchAPI<MatchupCell[]>('/matchups'),

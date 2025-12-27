@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api/client';
-import type { Card, CardWithPrice, PriceMover } from '../api/client';
+import type { CardWithPrice, PriceMover } from '../api/client';
 import { PageLoader } from '../components/LoadingSpinner';
 import { useState } from 'react';
-import { Search, TrendingUp, TrendingDown, DollarSign, ArrowRight } from 'lucide-react';
+import { Search, TrendingUp, TrendingDown, ArrowRight } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 export function Market() {
@@ -21,7 +21,7 @@ export function Market() {
     enabled: searchQuery.length >= 2,
   });
 
-  const { data: cardWithPrice, isLoading: loadingCard } = useQuery({
+  const { data: cardWithPrice } = useQuery({
     queryKey: ['cardPrice', selectedCard],
     queryFn: () => api.getCardWithPrices(selectedCard!),
     enabled: !!selectedCard,
@@ -151,7 +151,6 @@ export function Market() {
           card={cardWithPrice}
           priceHistory={priceHistory || []}
           onClose={() => setSelectedCard(null)}
-          isLoading={loadingCard}
         />
       )}
     </div>
@@ -192,13 +191,11 @@ function MoverRow({
 function CardDetailPanel({ 
   card, 
   priceHistory,
-  onClose,
-  isLoading 
+  onClose
 }: { 
   card: CardWithPrice;
   priceHistory: { fetched_at: string; price_usd: number | null }[];
   onClose: () => void;
-  isLoading: boolean;
 }) {
   const chartData = priceHistory.map(p => ({
     date: new Date(p.fetched_at).toLocaleDateString(),

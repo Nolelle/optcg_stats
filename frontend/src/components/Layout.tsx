@@ -4,7 +4,6 @@ import {
   Layers, 
   Grid3X3, 
   TrendingUp, 
-  Eye,
   Menu,
   X
 } from 'lucide-react';

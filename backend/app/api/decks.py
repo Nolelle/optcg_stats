@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from typing import List
 from app.database import get_db
 from app.services.deck_service import DeckService
-from app.schemas.deck import DeckResponse, DeckWithCost
+from app.schemas.deck import DeckResponse, DeckWithCost, DeckDetailedResponse
 
 router = APIRouter()
 
@@ -62,6 +62,16 @@ def get_deck_with_cost(deck_id: int, db: Session = Depends(get_db)):
     """Get a deck with calculated costs"""
     service = DeckService(db)
     deck = service.get_with_cost(deck_id)
+    if not deck:
+        raise HTTPException(status_code=404, detail="Deck not found")
+    return deck
+
+
+@router.get("/{deck_id}/detailed", response_model=DeckDetailedResponse)
+def get_deck_detailed(deck_id: int, db: Session = Depends(get_db)):
+    """Get detailed deck with full card information for deck viewer"""
+    service = DeckService(db)
+    deck = service.get_detailed(deck_id)
     if not deck:
         raise HTTPException(status_code=404, detail="Deck not found")
     return deck

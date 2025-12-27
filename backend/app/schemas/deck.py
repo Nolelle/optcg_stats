@@ -1,6 +1,21 @@
 from pydantic import BaseModel
 from datetime import datetime
-from typing import Optional, Dict
+from typing import Optional, Dict, List
+
+
+class CardInDeck(BaseModel):
+    """Card details for display in deck viewer"""
+    id: str
+    name: str
+    card_type: Optional[str] = None  # Leader, Character, Event, Stage
+    cost: Optional[int] = None
+    power: Optional[int] = None
+    color: Optional[str] = None
+    rarity: Optional[str] = None
+    image_url: Optional[str] = None
+    count: int = 1
+    price_usd: Optional[float] = None
+    price_eur: Optional[float] = None
 
 
 class DeckBase(BaseModel):
@@ -33,4 +48,15 @@ class DeckWithCost(DeckResponse):
     leader_name: Optional[str] = None
     leader_color: Optional[str] = None
     card_breakdown: Optional[Dict[str, float]] = None  # Card ID -> price
+
+
+class DeckDetailedResponse(DeckResponse):
+    """Detailed deck with full card information for deck viewer"""
+    total_cost_usd: Optional[float] = None
+    total_cost_eur: Optional[float] = None
+    leader_name: Optional[str] = None
+    leader_color: Optional[str] = None
+    leader_image_url: Optional[str] = None
+    cards: List[CardInDeck] = []
+    cost_curve: Dict[str, int] = {}  # cost -> count of cards at that cost
 
